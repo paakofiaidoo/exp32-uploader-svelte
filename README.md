@@ -1,47 +1,64 @@
-# Svelte + Vite
+# ESP32 Firmware Updater with Browser Serial API
 
-This template should help get you started developing with Svelte in Vite.
+This Svelte app allows you to update the firmware of an ESP32 device using the Browser Serial API. It is optimized for the latest Chromium-based browsers.
 
-## Recommended IDE Setup
+## Installation
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+Follow these steps to set up and run the ESP32 Firmware Updater:
 
-## Need an official Svelte framework?
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/your-username/esp32-firmware-updater.git
+   cd esp32-firmware-updater
+   ```
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+2. **Install Dependencies:**
+   ```bash
+   npm install
 
-## Technical considerations
+   ```
+   
+3. **Export Binary from Arduino:**
+    - Export the firmware binary for your ESP32 device from the Arduino IDE.
 
-**Why use this over SvelteKit?**
+4. **Create "main.zip":**
+    - Combine and zip the binary files into a single ZIP archive named "main.zip."
+    - Place the "main.zip" file in the `public` folder of the Svelte app.
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
 
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+5. **Run the App:**
+   ```bash
+   npm run dev
+   ```
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+6. **Access the App:**
+    - Open your browser and go to `http://localhost:5174` to access the ESP32 Firmware Updater.
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+## Usage
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+1. Open the app in a Chromium-based browser.
+2. Connect your ESP32 device to the computer.
+3. Follow the on-screen instructions to initiate the firmware update.
+4. The app will use the Browser Serial API to communicate with the connected ESP32 device.
+5. Monitor the update progress and wait for the process to complete.
 
-**Why include `.vscode/extensions.json`?**
+## Best Use Case
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+This app is designed for updating remote firmware on ESP32-powered devices with serial access. It streamlines the process using the Browser Serial API for a seamless and efficient firmware update.
 
-**Why enable `checkJs` in the JS template?**
+## Important Notes
 
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
+- Ensure that your ESP32 device is connected and powered before initiating the firmware update.
+- Verify that your browser supports the Browser Serial API, as this app relies on this feature.
 
-**Why is HMR not preserving my local component state?**
+## Troubleshooting
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/sveltejs/svelte-hmr/tree/master/packages/svelte-hmr#preservation-of-local-state).
+If you encounter any issues or have questions, please check the following:
 
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
+- Verify that the ESP32 device is correctly connected.
+- Ensure the "main.zip" file is placed in the `public` folder.
+- Confirm that your browser supports the Browser Serial API.
 
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
+For additional assistance, refer to the [Svelte documentation](https://svelte.dev/docs) or open an issue on the GitHub repository.
+
+Feel free to contribute, report bugs, or suggest improvements. Happy updating!
